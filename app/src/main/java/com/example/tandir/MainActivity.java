@@ -3,6 +3,7 @@ package com.example.tandir;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
@@ -15,6 +16,11 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity {
+    BottomNavigationMenuView mbottomNavigationMenuView;
+    View view;
+    BottomNavigationItemView itemView;
+    View cart_badge;
+    static TextView cart_badgeTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +38,24 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
 
 
-        BottomNavigationMenuView mbottomNavigationMenuView = (BottomNavigationMenuView) navView.getChildAt(0);
-        View view = mbottomNavigationMenuView.getChildAt(3);
-        BottomNavigationItemView itemView = (BottomNavigationItemView) view;
+        mbottomNavigationMenuView= (BottomNavigationMenuView) navView.getChildAt(0);
+        view = mbottomNavigationMenuView.getChildAt(3);
+        itemView = (BottomNavigationItemView) view;
 
-        View cart_badge = LayoutInflater.from(this).inflate(R.layout.custom_cart_item_layout, mbottomNavigationMenuView, false);
+        cart_badge = LayoutInflater.from(this).inflate(R.layout.custom_cart_item_layout, mbottomNavigationMenuView, false);
+        cart_badgeTv = cart_badge.findViewById(R.id.cart_badge);
+
         itemView.addView(cart_badge);
+    }
+
+    public static void increaseBagdeCount(){
+        int n = Integer.parseInt(""+cart_badgeTv.getText())+1;
+        cart_badgeTv.setText(""+n);
+    }
+
+    public static void decreaseBagdeCount(){
+        int n = Integer.parseInt(""+cart_badgeTv.getText())-1;
+        cart_badgeTv.setText(""+n);
     }
 
 }

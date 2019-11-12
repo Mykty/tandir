@@ -89,6 +89,7 @@ public class AddFood extends AppCompatActivity implements View.OnClickListener {
 
         submit = findViewById(R.id.submit);
 
+        cardView = findViewById(R.id.takePhoto);
         foodName = findViewById(R.id.foodName);
         foodDesc = findViewById(R.id.foodDesc);
         foodPrice = findViewById(R.id.foodPrice);
@@ -116,6 +117,7 @@ public class AddFood extends AppCompatActivity implements View.OnClickListener {
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
+
     }
 
     public void initTakePhoto() {

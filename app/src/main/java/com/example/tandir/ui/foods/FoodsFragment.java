@@ -51,6 +51,18 @@ public class FoodsFragment extends Fragment {
         recyclerViewFoods.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerViewFoods.setAdapter(productAdapter);
 
+        recyclerViewFoods.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0 && floatingActionButton.getVisibility() == View.VISIBLE) {
+                    floatingActionButton.hide();
+                } else if (dy < 0 && floatingActionButton.getVisibility() != View.VISIBLE) {
+                    floatingActionButton.show();
+                }
+            }
+        });
+
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,10 +108,11 @@ public class FoodsFragment extends Fragment {
     }
 
     public void generateListOfProducts(){
-        listOfProducts.add(new Meals("Салат","https://cdn.lifehacker.ru/wp-content/uploads/2018/08/2Cesar_1533672706-630x315.jpeg","Картошка с ново выпеченным",700,200,true));
-        listOfProducts.add(new Meals("Манты","http://1cookit.com/uploads/posts/2013-05/1369083155_69910584_0_9ef0_1ecaede5_xl.jpg","Картошка с ново выпеченным",700,200,false));
-        listOfProducts.add(new Meals("Котлеты","http://povarenysh.ru/upload/content/ochen-vkusnoe-blyudo.jpg","Картошка с ново выпеченным",700,200,true));
+        listOfProducts.add(new Meals("Тандыр нан","https://mir-biz.ru/wp-content/uploads/2017/07/xleb-iz-tandyra1.jpg","тандыр нан",700,200,true));
+        listOfProducts.add(new Meals("Хлеб в тандыре","https://md-eksperiment.org/images/posts/b9424c45-4b8d-4e0e-9336-ec71e308cf5f.jpeg","Хлеб в тандыре",700,200,false));
+        listOfProducts.add(new Meals("Узбекские лепешки в тандыре","https://omangale.ru/wp-content/uploads/2016/12/tandyr-nan.jpg","Узбекские лепешки в тандыре",700,200,true));
     }
+
     public void setDefault(){
 
         filter1.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.ic_nan));

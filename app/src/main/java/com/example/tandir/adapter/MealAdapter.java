@@ -22,6 +22,9 @@ import com.example.tandir.module.Meals;
 
 import java.util.ArrayList;
 
+import static com.example.tandir.MainActivity.decreaseBagdeCount;
+import static com.example.tandir.MainActivity.increaseBagdeCount;
+
 public class MealAdapter extends RecyclerView.Adapter<MealAdapter.EmployeeViewHolder> {
     ClickItemInterface clickItemInterface;
     ArrayList<Meals> dataList;
@@ -42,7 +45,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.EmployeeViewHo
         Meals product = dataList.get(position);
         holder.title.setText(product.getTitleOfMeal());
         holder.description.setText(product.getDescriptionOfMeal());
-        holder.price.setText(product.getPriceOfMeal()  + "Тг");
+        holder.price.setText(product.getPriceOfMeal()  + "Тг / шт");
         Glide.with(holder.itemView)
                 .load(product.getImageOfMeal())
                 .into(new CustomTarget<Drawable>() {
@@ -57,6 +60,52 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.EmployeeViewHo
                     }
                 });
         checkAvailabilityOfMeal(product,holder);
+
+        holder.add_circle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                holder.text_count.setVisibility(View.VISIBLE);
+                holder.del_circle.setVisibility(View.VISIBLE);
+
+                holder.text_count.setText("" + (Integer.parseInt(holder.text_count.getText().toString()) + 1));
+                increaseBagdeCount();
+                /*
+                String key = product.getTitle() + "_" + product.getPrice();
+                String count = holder.text_count.getText().toString();
+                //key = Калькулятор_2850
+                //value = 123
+
+                shoppping_cart_list.put(key, count);
+
+//                    Toast.makeText(context, "list: " + shoppping_cart_list.keySet(), Toast.LENGTH_SHORT).show();
+                shoppping_cart_btn.setText("" + shoppping_cart_list.keySet().size());
+
+                */
+            }
+        });
+
+        holder.del_circle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                holder.text_count.setVisibility(View.VISIBLE);
+                holder.del_circle.setVisibility(View.VISIBLE);
+
+                int c = Integer.parseInt(holder.text_count.getText().toString());
+
+                if (c != 0) {
+                    holder.text_count.setText("" + (c - 1));
+
+                    if ((c - 1) == 0) {
+                        holder.text_count.setVisibility(View.GONE);
+                        holder.del_circle.setVisibility(View.GONE);
+                    }
+                    decreaseBagdeCount();
+                }
+
+            }
+        });
     }
 
     public void checkAvailabilityOfMeal(Meals product,final EmployeeViewHolder holder){
@@ -77,6 +126,10 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.EmployeeViewHo
         TextView description;
         TextView price;
         TextView availability;
+        TextView text_count;
+        ImageView del_circle;
+        ImageView add_circle;
+
         EmployeeViewHolder(View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageView);
@@ -84,12 +137,10 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.EmployeeViewHo
             description = itemView.findViewById(R.id.description);
             availability = itemView.findViewById(R.id.inProcess);
             price = itemView.findViewById(R.id.price);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    clickItemInterface.clickItem(getPosition());
-                }
-            });
+
+            add_circle = itemView.findViewById(R.id.add_circle);
+            del_circle = itemView.findViewById(R.id.del_circle);
+            text_count = itemView.findViewById(R.id.text_count);
 
         }
     }
