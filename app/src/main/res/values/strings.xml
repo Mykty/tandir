@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Tandir</string>
+    <string name="title1">Выпечки</string>
+    <string name="title2">История</string>
+    <string name="title3">Аккаунт</string>
+    <string name="title4">Корзина</string>
+    <string name="photoLoading">Image uploading...</string>
+</resources>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "225434455134",
+    "firebase_url": "https://tandir-8aef9.firebaseio.com",
+    "project_id": "tandir-8aef9",
+    "storage_bucket": "tandir-8aef9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225434455134:android:f26be0ebc3691b7ba238cf",
+        "android_client_info": {
+          "package_name": "com.example.tandir"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "225434455134-8uiaap2p3r82lhofvnl22o5cdqetcmqn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tandir",
+            "certificate_hash": "21c266670d4f1e9be1a3b24fe530a1ca2bd1ad70"
+          }
+        },
+        {
+          "client_id": "225434455134-3sct9dbr6bl92qj7d3jsocu7ldpphdk5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfWFoUDzdNsW-yX9s8yDvw7CJLgSUUXPM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "225434455134-3sct9dbr6bl92qj7d3jsocu7ldpphdk5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
