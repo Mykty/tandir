@@ -1,20 +1,20 @@
 package com.example.tandir.module;
 
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.Spinner;
-
 public class Food {
     String fKey;
     String foodName;
+    String foodPhoto;
     String foodDesc;
     String foodType;
     int foodPrice;
     String foodAvailable;
 
-    public Food(String fKey, String foodName, String foodDesc, String foodType, int foodPrice, String foodAvailable) {
+    public Food(){}
+
+    public Food(String fKey, String foodPhoto,  String foodName, String foodDesc, String foodType, int foodPrice, String foodAvailable) {
         this.fKey = fKey;
         this.foodName = foodName;
+        this.foodPhoto = foodPhoto;
         this.foodDesc = foodDesc;
         this.foodType = foodType;
         this.foodPrice = foodPrice;
@@ -37,6 +37,14 @@ public class Food {
         this.foodName = foodName;
     }
 
+    public String getFoodPhoto() {
+        return foodPhoto;
+    }
+
+    public void setFoodPhoto(String foodPhoto) {
+        this.foodPhoto = foodPhoto;
+    }
+
     public String getFoodDesc() {
         return foodDesc;
     }
@@ -57,6 +65,11 @@ public class Food {
         return foodPrice;
     }
 
+    public boolean isAvailable(){
+        if(foodAvailable.equals("t")) return true;
+
+        return false;
+    }
     public void setFoodPrice(int foodPrice) {
         this.foodPrice = foodPrice;
     }

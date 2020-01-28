@@ -5,8 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,6 +16,7 @@ import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.example.tandir.R;
 import com.example.tandir.module.ClickItemInterface;
+import com.example.tandir.module.Food;
 import com.example.tandir.module.Meals;
 
 import java.util.ArrayList;
@@ -25,11 +24,11 @@ import java.util.ArrayList;
 import static com.example.tandir.MainActivity.decreaseBagdeCount;
 import static com.example.tandir.MainActivity.increaseBagdeCount;
 
-public class MealAdapter extends RecyclerView.Adapter<MealAdapter.EmployeeViewHolder> {
+public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.EmployeeViewHolder> {
     ClickItemInterface clickItemInterface;
-    ArrayList<Meals> dataList;
+    ArrayList<Food> dataList;
 
-    public MealAdapter(ArrayList<Meals> dataList) {
+    public FoodAdapter(ArrayList<Food> dataList) {
         this.dataList = dataList;
     }
 
@@ -42,12 +41,14 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.EmployeeViewHo
 
     @Override
     public void onBindViewHolder(final EmployeeViewHolder holder, @SuppressLint("RecyclerView") final int position) {
-        Meals product = dataList.get(position);
-        holder.title.setText(product.getTitleOfMeal());
-        holder.description.setText(product.getDescriptionOfMeal());
-        holder.price.setText(product.getPriceOfMeal()  + "Тг / шт");
+        Food food = dataList.get(position);
+
+        holder.title.setText(food.getFoodName());
+        holder.description.setText(food.getFoodDesc());
+        holder.price.setText(food.getFoodPrice()  + "Тг / шт");
+
         Glide.with(holder.itemView)
-                .load(product.getImageOfMeal())
+                .load(food.getFoodPhoto())
                 .into(new CustomTarget<Drawable>() {
                     @Override
                     public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
@@ -59,7 +60,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.EmployeeViewHo
 
                     }
                 });
-        checkAvailabilityOfMeal(product,holder);
+        checkAvailabilityOfMeal(food, holder);
 
         holder.add_circle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,18 +71,6 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.EmployeeViewHo
 
                 holder.text_count.setText("" + (Integer.parseInt(holder.text_count.getText().toString()) + 1));
                 increaseBagdeCount();
-                /*
-                String key = product.getTitle() + "_" + product.getPrice();
-                String count = holder.text_count.getText().toString();
-                //key = Калькулятор_2850
-                //value = 123
-
-                shoppping_cart_list.put(key, count);
-
-//                    Toast.makeText(context, "list: " + shoppping_cart_list.keySet(), Toast.LENGTH_SHORT).show();
-                shoppping_cart_btn.setText("" + shoppping_cart_list.keySet().size());
-
-                */
             }
         });
 
@@ -108,7 +97,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.EmployeeViewHo
         });
     }
 
-    public void checkAvailabilityOfMeal(Meals product,final EmployeeViewHolder holder){
+    public void checkAvailabilityOfMeal(Food product,final EmployeeViewHolder holder){
         if(!product.isAvailable()){
             holder.availability.setBackgroundColor(holder.itemView.getResources().getColor(R.color.colorPrimaryDark));
             holder.availability.setText("Не доступно");
