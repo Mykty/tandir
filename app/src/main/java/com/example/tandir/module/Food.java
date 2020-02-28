@@ -8,6 +8,7 @@ public class Food {
     String foodType;
     int foodPrice;
     String foodAvailable;
+    int foodCount;
 
     public Food(){}
 
@@ -19,6 +20,24 @@ public class Food {
         this.foodType = foodType;
         this.foodPrice = foodPrice;
         this.foodAvailable = foodAvailable;
+    }
+
+    public Food(String fKey, String foodPhoto,  String foodName, String foodDesc, String foodType, int foodCount, int foodPrice) {
+        this.fKey = fKey;
+        this.foodName = foodName;
+        this.foodPhoto = foodPhoto;
+        this.foodDesc = foodDesc;
+        this.foodType = foodType;
+        this.foodPrice = foodPrice;
+        this.foodCount = foodCount;
+    }
+
+    public int getFoodCount() {
+        return foodCount;
+    }
+
+    public void setFoodCount(int foodCount) {
+        this.foodCount = foodCount;
     }
 
     public String getfKey() {

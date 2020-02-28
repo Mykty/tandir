@@ -10,10 +10,10 @@ import android.util.Log;
 public class StoreDatabase extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "tandir.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 6;
 
     public static final String TABLE_FOOD = "food_store";
-    public static final String TABLE_ORDER_HISTORY = "order_history_store";
+    public static final String TABLE_ORDER = "order_history";
 
     public static final String COLUMN_FKEY = "fkey";
     public static final String COLUMN_PHOTO = "photo";
@@ -22,9 +22,9 @@ public class StoreDatabase extends SQLiteOpenHelper {
     public static final String COLUMN_FAVAILABLE = "true";
     public static final String COLUMN_FTYPE = "foodType";
     public static final String COLUMN_FPRICE = "price";
+    public static final String COLUMN_FCOUNT = "count";
     public static final String TABLE_VER = "versions";
     public static final String COLUMN_FOOD_VER = "food_ver";
-
 
 
     Context context;
@@ -44,7 +44,16 @@ public class StoreDatabase extends SQLiteOpenHelper {
                 COLUMN_FDESC + " TEXT, " +
                 COLUMN_FAVAILABLE + " TEXT, " +
                 COLUMN_FTYPE + " TEXT, " +
-                COLUMN_FPRICE + " TEXT )");
+                COLUMN_FPRICE + " INTEGER )");
+
+        db.execSQL("CREATE TABLE " + TABLE_ORDER + "(" +
+                COLUMN_FKEY + " TEXT, " +
+                COLUMN_PHOTO + " TEXT, " +
+                COLUMN_NAME + " TEXT, " +
+                COLUMN_FDESC + " TEXT, " +
+                COLUMN_FTYPE + " TEXT, " +
+                COLUMN_FCOUNT + " INTEGER, " +
+                COLUMN_FPRICE + " INTEGER )");
 
         db.execSQL("CREATE TABLE " + TABLE_VER + "(" +
                 COLUMN_FOOD_VER + " TEXT)");
@@ -56,6 +65,7 @@ public class StoreDatabase extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_FOOD);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_VER);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ORDER);
 
         onCreate(db);
     }

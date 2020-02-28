@@ -19,8 +19,8 @@ public class HistoryFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_badge, container, false);
-        final TextView textView = root.findViewById(R.id.text_notifications);
+        View root = inflater.inflate(R.layout.fragment_history, container, false);
+//        final TextView textView = root.findViewById(R.id.text_notifications);
 
         return root;
     }

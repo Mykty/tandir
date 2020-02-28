@@ -5,4 +5,45 @@
     <string name="title3">Аккаунт</string>
     <string name="title4">Корзина</string>
     <string name="photoLoading">Image uploading...</string>
+
+    <string-array name="dates">
+        <item>Сегодня</item>
+        <item>Завтра</item>
+        <item>Понедельник</item>
+        <item>Вторник</item>
+        <item>Среда</item>
+        <item>Четверг</item>
+    </string-array>
+
+    <string-array name="times">
+        <item>10:00 - 11:00</item>
+        <item>11:00 - 12:00</item>
+        <item>12:00 - 13:00</item>
+        <item>13:00 - 14:00</item>
+        <item>14:00 - 15:00</item>
+    </string-array>
+
+    <string-array name="jks">
+        <item>Шахристан</item>
+        <item>Сезам</item>
+        <item>Мега</item>
+        <item>Толе би</item>
+    </string-array>
+
+    <string-array name="korpus">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+    </string-array>
+
+    <string-array name="kvs">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>5</item>
+        <item>10</item>
+        <item>12</item>
+    </string-array>
+
 </resources>

@@ -42,12 +42,14 @@ public class UpdateFoodAsyncTask extends AsyncTask<Void, Food, Void> {
     FoodAdapter foodAdapter;
     Context context;
     String version = "";
+    String fType = "";
 
-    public UpdateFoodAsyncTask(Context context, RecyclerView recyclerView, SwipeRefreshLayout refreshLayout, String version) {
+    public UpdateFoodAsyncTask(Context context, RecyclerView recyclerView, SwipeRefreshLayout refreshLayout, String version, String fType) {
         this.recyclerView = recyclerView;
         this.swipeRefreshLayout = refreshLayout;
         this.context = context;
         this.version = version;
+        this.fType = fType;
     }
 
     @Override
@@ -78,8 +80,6 @@ public class UpdateFoodAsyncTask extends AsyncTask<Void, Food, Void> {
 
                 for (DataSnapshot foodsSnapshot : dataSnapshot.getChildren()) {
                         Food food = foodsSnapshot.getValue(Food.class);
-                        Log.i("FoodsFragment", food.getFoodName());
-
 
                         String fKey = food.getfKey();
                         String foodPhoto = food.getFoodPhoto();
@@ -99,14 +99,20 @@ public class UpdateFoodAsyncTask extends AsyncTask<Void, Food, Void> {
                         foodValue.put(COLUMN_FPRICE, foodPrice);
                         
                         sqdb.insert(TABLE_FOOD, null, foodValue);
-                        foodList.add(new Food(fKey, foodPhoto, foodName, foodDesc, foodType, foodPrice, foodAvailable));
+
+
+                        if(fType.equals("nan") && food.getFoodType().equals("nan"))
+                            foodList.add(new Food(fKey, foodPhoto, foodName, foodDesc, foodType, foodPrice, foodAvailable));
+                        if(fType.equals("samsa") && food.getFoodType().equals("samsa"))
+                            foodList.add(new Food(fKey, foodPhoto, foodName, foodDesc, foodType, foodPrice, foodAvailable));
+                        if(fType.equals("susin") && food.getFoodType().equals("susin"))
+                            foodList.add(new Food(fKey, foodPhoto, foodName, foodDesc, foodType, foodPrice, foodAvailable));
+
                 }
 
                 Collections.reverse(foodList);
                 foodAdapter = new FoodAdapter(foodList);
                 recyclerView.setAdapter(foodAdapter);
-
-//                setTitle("Users " + userList.size());
             }
 
             @Override

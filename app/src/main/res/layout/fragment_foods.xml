@@ -114,37 +114,25 @@
 
         </LinearLayout>
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipeRefreshLayout"
+        <FrameLayout
+            android:id="@+id/fragment_content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="20sp">
+            android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:clipToPadding="false"
-            android:visibility="visible"
-            android:minHeight="72dp"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:listitem="@layout/item_food" />
-
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </FrameLayout>
 
     </LinearLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="30dp"
-        android:clickable="true"
-        android:visibility="gone"
-        app:srcCompat="@drawable/ic_add" />
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/floatingActionButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginRight="30dp"-->
+<!--        android:layout_marginBottom="30dp"-->
+<!--        android:clickable="true"-->
+<!--        android:visibility="gone"-->
+<!--        app:srcCompat="@drawable/ic_add" />-->
 
 </RelativeLayout>
